@@ -9,20 +9,12 @@ import {
 } from "react-router-dom";
 import Account from "components/Account";
 import Chains from "components/Chains";
-import TokenPrice from "components/TokenPrice";
-import ERC20Balance from "components/ERC20Balance";
-import ERC20Transfers from "components/ERC20Transfers";
-import InchDex from "components/InchDex";
 import NFTBalance from "components/NFTBalance";
-import Wallet from "components/Wallet";
-import { Menu, Layout, Tabs } from "antd";
+import { Menu, Layout } from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
-import QuickStart from "components/QuickStart";
-import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
-import Ramper from "components/Ramper";
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -81,10 +73,15 @@ const App = ({ isServerInfo }) => {
             }}
             defaultSelectedKeys={["quickstart"]}
           >
-            <Menu.Item key="nft">
-              <NavLink to="/nftBalance">🖼 NFTs</NavLink>
+            <Menu.Item key="nftMarket">
+              <NavLink to="/nftMarket">Explore</NavLink>
             </Menu.Item>
-
+            <Menu.Item key="nft">
+              <NavLink to="/nftBalance">Your Collection</NavLink>
+            </Menu.Item>
+            <Menu.Item key="transactions">
+              <NavLink to="/transactions">Transactions</NavLink>
+            </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
             <Chains />
@@ -97,7 +94,12 @@ const App = ({ isServerInfo }) => {
             <Route path="/nftBalance">
               <NFTBalance />
             </Route>
-
+            <Route path="/nftMarket">
+              <NFTBalance />
+            </Route>
+            <Route path="/transactions">
+              <NFTBalance />
+            </Route>
           </Switch>
           <Redirect to="/nftBalance" />
         </div>
